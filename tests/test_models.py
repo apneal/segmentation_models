@@ -3,6 +3,7 @@ import pytest
 import random
 import six
 import numpy as np
+import tensorflow as tf
 
 import segmentation_models as sm
 from segmentation_models import Unet
@@ -49,7 +50,7 @@ def keras_test(func):
     @six.wraps(func)
     def wrapper(*args, **kwargs):
         output = func(*args, **kwargs)
-        keras.backend.clear_session()
+        tf.keras.backend.clear_session()
         return output
     return wrapper
 

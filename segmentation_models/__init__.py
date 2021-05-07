@@ -2,11 +2,12 @@ import os
 import functools
 from .__version__ import __version__
 from . import base
+import tensorflow as tf
 
 _KERAS_FRAMEWORK_NAME = 'keras'
 _TF_KERAS_FRAMEWORK_NAME = 'tf.keras'
 
-_DEFAULT_KERAS_FRAMEWORK = _KERAS_FRAMEWORK_NAME
+_DEFAULT_KERAS_FRAMEWORK = _TF_KERAS_FRAMEWORK_NAME
 _KERAS_FRAMEWORK = None
 _KERAS_BACKEND = None
 _KERAS_LAYERS = None
@@ -47,7 +48,7 @@ def filter_kwargs(func):
 
 def framework():
     """Return name of Segmentation Models framework"""
-    return _KERAS_FRAMEWORK
+    return _DEFAULT_KERAS_FRAMEWORK
 
 
 def set_framework(name):
@@ -77,7 +78,7 @@ def set_framework(name):
     global _KERAS_UTILS, _KERAS_LOSSES, _KERAS_FRAMEWORK
 
     _KERAS_FRAMEWORK = name
-    _KERAS_BACKEND = keras.backend
+    _KERAS_BACKEND = tf.keras.backend
     _KERAS_LAYERS = keras.layers
     _KERAS_MODELS = keras.models
     _KERAS_UTILS = keras.utils

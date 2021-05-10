@@ -7,6 +7,7 @@ import tensorflow as tf
 
 import segmentation_models as sm
 from segmentation_models import Unet
+from segmentation_models import Unet1D
 from segmentation_models import Linknet
 from segmentation_models import PSPNet
 from segmentation_models import FPN
@@ -72,6 +73,23 @@ def _test_none_shape(model_fn, backbone, *args, **kwargs):
     # check output dimensions
     assert x.shape[:-1] == y.shape[:-1]
 
+@keras_test
+def _test_none_shape_1d(model_fn, backbone, *args, **kwargs):
+
+    # define number of channels
+    input_shape = kwargs.get('input_shape', None)
+    n_channels = 3 if input_shape is None else input_shape[-1]
+
+    # create test sample
+    x = np.ones((1, 32, n_channels))
+
+    # define model and process sample
+    model = model_fn(backbone, *args, **kwargs)
+    y = model.predict(x)
+
+    # check output dimensions
+    assert x.shape[:-1] == y.shape[:-1]
+
 
 @keras_test
 def _test_shape(model_fn, backbone, input_shape, *args, **kwargs):
@@ -98,6 +116,16 @@ def test_unet(backbone):
     _test_shape(
         Unet, backbone, input_shape=(256, 256, 4), encoder_weights=None)
 
+@pytest.mark.parametrize('backbone', _select_names(BACKBONES))
+def test_unet_1d(backbone):
+    _test_none_shape_1d(
+        Unet1D, backbone, encoder_weights=None)
+
+#    _test_none_shape_1d(
+#        Unet, backbone, encoder_weights='imagenet')
+
+    _test_shape(
+        Unet1D, backbone, input_shape=(256, 4), encoder_weights=None)
 
 @pytest.mark.parametrize('backbone', _select_names(BACKBONES))
 def test_linknet(backbone):
@@ -132,6 +160,10 @@ def test_fpn(backbone):
     _test_shape(
         FPN, backbone, input_shape=(256, 256, 4), encoder_weights=None)
 
+#*******
+test_unet_1d('vgg16_1d')
+###******
 
 if __name__ == '__main__':
     pytest.main([__file__])
+

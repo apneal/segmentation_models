@@ -20,6 +20,7 @@ class BackbonesFactory(ModelsFactory):
 
         # ResNets
         'resnet18': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
+        'resnet18_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
         'resnet34': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
         'resnet50': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
         'resnet50_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),

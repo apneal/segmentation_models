@@ -1,6 +1,6 @@
 import copy
 import efficientnet.model as eff
-from classification_models.models_factory import ModelsFactory
+from .models_factory import ModelsFactory
 
 from . import inception_resnet_v2 as irv2
 from . import inception_v3 as iv3
@@ -19,10 +19,10 @@ class BackbonesFactory(ModelsFactory):
         'vgg19': ('block5_conv4', 'block4_conv4', 'block3_conv4', 'block2_conv2', 'block1_conv2'),
 
         # ResNets
-        'resnet18': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
+        'resnet18': ('conv4_block2_out', 'conv3_block2_out', 'conv2_block2_out', 'conv1_relu'),
         'resnet18_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
-        'resnet34': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
-        'resnet50': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
+        'resnet34': ('conv4_block6_out', 'conv3_block4_out', 'conv2_block3_out', 'conv1_relu'),
+        'resnet50': ('conv4_block6_out', 'conv3_block4_out', 'conv2_block3_out', 'conv1_relu'),
         'resnet50_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
         'resnet101': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
         'resnet152': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),

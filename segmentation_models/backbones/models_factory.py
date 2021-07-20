@@ -20,8 +20,10 @@ class ModelsFactory:
         'resnet34_1d': [ka.resnet_1d.ResNet34, ka.resnet_1d.preprocess_input],
         'resnet50': [ka.resnet.ResNet50, ka.resnet.preprocess_input],
         'resnet50_1d': [ka.resnet_1d.ResNet50, ka.resnet_1d.preprocess_input],
-        'resnet101': [rn.ResNet101, rn.preprocess_input],
-        'resnet152': [rn.ResNet152, rn.preprocess_input],
+        'resnet101': [ka.resnet.ResNet101, ka.resnet.preprocess_input],
+        'resnet101_1d': [ka.resnet_1d.ResNet101, ka.resnet_1d.preprocess_input],
+        'resnet152': [ka.resnet.ResNet152, ka.resnet.preprocess_input],
+        'resnet152_1d': [ka.resnet_1d.ResNet152, ka.resnet_1d.preprocess_input],
 
         # SE-Nets
         'seresnet18': [rn.SEResNet18, rn.preprocess_input],

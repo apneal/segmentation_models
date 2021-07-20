@@ -20,10 +20,11 @@ class BackbonesFactory(ModelsFactory):
 
         # ResNets
         'resnet18': ('conv4_block2_out', 'conv3_block2_out', 'conv2_block2_out', 'conv1_relu'),
-        'resnet18_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
+        'resnet18_1d': ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
         'resnet34': ('conv4_block6_out', 'conv3_block4_out', 'conv2_block3_out', 'conv1_relu'),
+        'resnet34_1d': ('conv4_block6_out', 'conv3_block4_out', 'conv2_block3_out', 'conv1_relu'),
         'resnet50': ('conv4_block6_out', 'conv3_block4_out', 'conv2_block3_out', 'conv1_relu'),
-        'resnet50_1d' : ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
+        'resnet50_1d': ('conv4_block1_out', 'conv3_block1_out', 'conv2_block1_out', 'conv1_relu'),
         'resnet101': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
         'resnet152': ('stage4_unit1_relu1', 'stage3_unit1_relu1', 'stage2_unit1_relu1', 'relu0'),
 
